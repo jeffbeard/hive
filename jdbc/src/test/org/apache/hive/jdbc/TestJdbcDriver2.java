@@ -1252,4 +1252,13 @@ public class TestJdbcDriver2 extends TestCase {
     assertFalse(res.next());
   }
 
+  /**                                                                                    
+   * If the Driver implementation understands the URL, it will return a Connection object;
+   * otherwise it returns null                                                           
+   */                                                                                    
+  public void testInvalidURL() throws Exception {                                        
+    HiveDriver driver = new HiveDriver();                                                
+    Connection conn = driver.connect("jdbc:derby://localhost:10000/default", new Properties());
+    assertNull(conn);                                                                    
+  }                                                                                      
 }
